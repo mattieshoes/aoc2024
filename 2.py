@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+# Verfies sequence is always increasing or always decreasing
+# and every step is no more than 3
+
 def is_safe(report):
     inc = False
     dec = False
@@ -17,6 +20,9 @@ def is_safe(report):
             return False
     return True
 
+# if the sequence isn't safe, try each sequence created by skipping an
+# element in the sequence.
+
 def damper(report):
     if is_safe(report):
         return True
@@ -25,15 +31,20 @@ def damper(report):
             return True
     return False
 
+# Get inputs
+
 with open("inputs/2") as f:
     lines = f.read().rstrip("\n").split("\n")
 
+# Parse inputs and check safety, give count
 part1 = 0
 for line in lines:
     if is_safe(list(map(int, line.split()))):
         part1 += 1
 print(f"Part 1: {part1}")
 
+# Parse inputs and check safety with the damper, give count
+# Probably should have parsed inputs only once
 part2 = 0
 for line in lines:
     if damper(list(map(int, line.split()))):
