@@ -25,3 +25,4 @@ part2 = 0
 for num in left:
     part2 += num * right.count(num)
 print(f"Part 2: {part2}")
+

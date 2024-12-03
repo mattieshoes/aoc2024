@@ -42,3 +42,4 @@ for m in match_list:
     elif do:
         part2 += int(m[0]) * int(m[1])
 print(f"Part 2: {part2}")
+

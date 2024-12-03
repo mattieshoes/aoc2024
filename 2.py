@@ -42,3 +42,4 @@ for line in lines:
     if damper(list(map(int, line.split()))):
         part2 += 1
 print(f"Part 2: {part2}")
+
