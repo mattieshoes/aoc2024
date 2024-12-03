@@ -5,7 +5,7 @@ import re
 with open("inputs/3") as f:
     input = f.read()
 
-# regex will match mul(num1,num2) where num1 and num2 are 1-3 digit strings
+# regex, will match mul(num1,num2) where num1 and num2 are 1-3 digit strings
 # and output a list of tuples.  ie. 
 # [('<num1>', '<num2>'), ('<num1>', '<num2>'), ...]
 
@@ -20,9 +20,8 @@ for m in match_list:
     part1 += int(m[0]) * int(m[1])
 print(f"Part 1: {part1}")
 
-# regex
-# will catch the above as well as do() and don't(), returning a list of tuples.  
-# Might be:
+# regex, will catch the above as well as do() and don't(), 
+# returning a list of tuples.  The tuples might be:
 # ('<num1>', '<num2>', '', '')
 # ('', '', 'do', '')
 # ('', '', '', "don't")
