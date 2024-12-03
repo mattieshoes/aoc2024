@@ -1,14 +1,13 @@
 #!/usr/bin/python3
 
-# Verfies sequence is always increasing or always decreasing
-# and every step is no more than 3
-
+# Function verfies sequence is always increasing or always decreasing
+# and every step greater than zero but no more than 3
 def is_safe(report):
     inc = False
     dec = False
 
     for pair in zip(report[:-1], report[1:]):
-        if pair[0] == pair[1]:
+        if pair[0] == pair[1] or abs(pair[0] - pair[1]) > 3:
             return False
         if pair[0] > pair[1]:
             dec = True
@@ -16,13 +15,10 @@ def is_safe(report):
             inc = True
         if inc and dec:
             return False
-        if abs(pair[0]-pair[1]) > 3:
-            return False
     return True
 
-# if the sequence isn't safe, try each sequence created by skipping an
-# element in the sequence.
-
+# Function tests if sequence is safe.  If not, try each potential sequence 
+# created by skipping an element.  Returns True if any are safe.
 def damper(report):
     if is_safe(report):
         return True

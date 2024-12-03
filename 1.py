@@ -3,7 +3,7 @@
 with open("inputs/1") as f:
     lines = f.read().rstrip("\n").split("\n")
 
-# parse inputs -- columns to rows, strings to ints
+# parse lines -- columns to rows, strings to ints
 left = list()
 right = list()
 for line in lines:
