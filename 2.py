@@ -31,8 +31,6 @@ def damper(report):
             return True
     return False
 
-# Get inputs
-
 with open("inputs/2") as f:
     lines = f.read().rstrip("\n").split("\n")
 
@@ -44,7 +42,6 @@ for line in lines:
 print(f"Part 1: {part1}")
 
 # Parse inputs and check safety with the damper, give count
-# Probably should have parsed inputs only once
 part2 = 0
 for line in lines:
     if damper(list(map(int, line.split()))):

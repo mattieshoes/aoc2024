@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-# get inputs
 with open("inputs/1") as f:
     lines = f.read().rstrip("\n").split("\n")
 
@@ -20,9 +19,8 @@ for pair in zip(left, right):
     part1 += abs(pair[0] - pair[1])
 print(f"Part 1: {part1}")
 
-# The "right" way is probably to make a dictionary if we were going
-# to refer back to this a lot, but we aren't, so simply counting
-# instances in the right column works fine
+# iterate through left, counting matching instances in right, 
+# and summing the product
 part2 = 0
 for num in left:
     part2 += num * right.count(num)
