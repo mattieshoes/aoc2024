@@ -5,7 +5,6 @@
 def is_safe(report):
     inc = False
     dec = False
-
     for pair in zip(report[:-1], report[1:]):
         if pair[0] == pair[1] or abs(pair[0] - pair[1]) > 3:
             return False
