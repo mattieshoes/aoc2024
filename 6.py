@@ -22,18 +22,12 @@ with open("inputs/6") as f:
 # locate starting position and direction of travel
 starting_pos = (0, 0)
 starting_facing = (0, 0)
+dirs = {'^': (-1,0), '>': (0,1), '<': (0,-1), 'v': (1,0)}
 for r in range(len(lines)):
     for c in range(len(lines[0])):
-        if lines[r][c] != '.' and lines[r][c] != '#':
+        if lines[r][c] in dirs:
             starting_pos = (r, c)
-            if lines[r][c] == '^':
-                starting_facing = (-1, 0)
-            elif lines[r][c] == '>':
-                starting_facing = (0, 1)
-            elif lines[r][c] == '<':
-                starting_facing = (0, -1)
-            elif lines[r][c] == 'v':
-                starting_facing = (1, 0)
+            starting_facing = dirs[lines[r][c]]
             break
 
 # Iterate our soldier until he leaves the board.  Count number of uniqe locations
