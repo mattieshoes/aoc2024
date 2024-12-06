@@ -30,13 +30,13 @@ rules = [list(map(int, x.split("|"))) for x in input[0].split("\n")]
 sequences = [list(map(int,x.split(","))) for x in input[1].split("\n")]
 
 # build a dictionary out of the rules 
-# before[num] contains a list of all numbers it must come before.
+# before[num] contains a set of all numbers it must come before.
 before = dict()
 for rule in rules:
     if rule[0] in before:
-        before[rule[0]].append(rule[1])
+        before[rule[0]].add(rule[1])
     else:
-        before[rule[0]] = [rule[1]]
+        before[rule[0]] = {rule[1]}
 
 # Validate all sequences, add middle value of valid sequences
 part1 = 0
