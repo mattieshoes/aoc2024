@@ -1,27 +1,23 @@
 #!/usr/bin/python3
 
-# For part 2 -- recursive function finding all uniqe trails
-# returns number
-def alternative_score(r, c):
-    if lines[r][c] == 9:
-        return 1
-    target = lines[r][c] + 1
-    results = 0
-    for off in [(-1, 0), (0, -1), (0, 1), (1, 0)]:
-            if lines[r+off[0]][c+off[1]] == target:
-                results += alternative_score(r+off[0], c+off[1])
-    return results
+# recursive, depth-first search that takes all valid paths
+# returns a dictionary containing the peaks as keys 
+# and the number of ways to reach them as values
+# This solves part 1 and part 2 simultaneously 
 
-# For part 1 -- recursive function finding reachable peaks
-# returns set containing reachable peaks to avoid duplicates
-def score(r, c):
+def score(r, c): 
     if lines[r][c] == 9:
-        return {(r, c)}
-    target = lines[r][c] + 1
-    results = set()
+        return {(r, c): 1}
+    target = lines[r][c] + 1 
+    results = dict()
     for off in [(-1, 0), (0, -1), (0, 1), (1, 0)]:
             if lines[r+off[0]][c+off[1]] == target:
-                results.update(score(r+off[0], c+off[1]))
+                temp = score(r+off[0], c+off[1])
+                for key in temp.keys():
+                    if key in results:
+                        results[key] += temp[key]
+                    else:
+                        results[key] = temp[key]
     return results
 
 with open("inputs/10") as f:
@@ -34,18 +30,15 @@ for i in range(len(lines)):
 empty = [-1 for x in range(len(lines[0]))]
 lines = [empty] + lines + [empty]
 
-# just sum number of reachable peaks for each trailhead
-part1 = 0
+# Part 1 is the number of reachable peaks
+# Part 2 is the total number of paths (sum of values)
+part1 = 0 
+part2 = 0 
 for r in range(len(lines)):
     for c in range(len(lines[0])):
         if lines[r][c] == 0: # trailhead
-            part1 += len(score(r, c))
+            results = score(r, c)
+            part1 += len(results)                                                                                                                                                                           
+            part2 += sum(results.values())
 print(f"Part 1: {part1}")
-
-# just sum number of unique trails for each trailhead
-part2 = 0
-for r in range(len(lines)):
-    for c in range(len(lines[0])):
-        if lines[r][c] == 0: # trailhead
-            part2 += alternative_score(r, c)
 print(f"Part 2: {part2}")
