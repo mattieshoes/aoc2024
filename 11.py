@@ -2,7 +2,7 @@
 
 import functools
 
-# since the order stays the same when we blink, we can iterate each value 
+# Since stones never combine when we blink, we can iterate each value 
 # separately.  Since there's a lot of repeat combinations of a value and 
 # a number of blinks, we can cache prior results what happens rather than 
 # make the same calculations incessantly -- the term is memoization.  
