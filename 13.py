@@ -8,6 +8,11 @@ from math import lcm
 # Part 2 solution.  It's not perfect (it can't solve part 1) probably 
 # because the cycle finding overruns the actual answer.  That's not
 # an issue with part 2 since the prize is out past 10 trillion
+# 
+# Also if the ratio of X to Y is the same for both A and B
+# and it's the correct ratio, then there's a bunch of answers.
+# I didn't even bother to check because this whole thing is a hot mess
+# anyway.  
 
 def solve2(a, b, prize):
 
