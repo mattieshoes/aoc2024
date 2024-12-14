@@ -59,7 +59,7 @@ print(f"Part 1: {part1}")
 iterate(-100) # iterate works in reverse!
 best = 999999999
 part2 = 0
-for count in range(101*103):
+for count in range(width*height):
     counts = [0,0,0,0,0]
     score = safety_score()
     if score < best:
