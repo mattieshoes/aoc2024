@@ -58,11 +58,15 @@ print(f"Part 1: {part1}")
 # This just prints the grid whenever a new lowest safety score is found
 iterate(-100) # iterate works in reverse!
 best = 999999999
-for count in range(1000000):
+part2 = 0
+for count in range(101*103):
     counts = [0,0,0,0,0]
     score = safety_score()
     if score < best:
         best = score
-        printgrid()
-        print(count)
+        #printgrid()
+        #print(count)
+        part2 = count
     iterate(1)
+print(f"Part 2: {part2}")
+
