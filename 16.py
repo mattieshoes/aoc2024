@@ -1,4 +1,4 @@
-#!/usr/bin/pypy3
+#!/usr/bin/python3
 
 # Homerolled Dijkstra's algorithm...
 #
@@ -132,6 +132,9 @@ while len(frontier) > 0:
             smallest = frontier[k]
             smallest_key = k
 
+    if part1 > 0 and smallest > part1:
+        break
+
     # expand that node
     expand(smallest_key)
 
@@ -140,12 +143,13 @@ while len(frontier) > 0:
     if smallest_key in win_condition:
         part1 = solved[smallest_key]
         part1_key = smallest_key
-        break
 print(f"Part 1: {part1}")
 
 # using part1 solved nodes set to backtrack through all winning paths
 winning_paths = set()
-backtrack(part1_key)
+for wc in win_condition:
+    if wc in solved:
+        backtrack(wc)
 part2 = len(winning_paths)
 print(f"Part 2: {part2}")
 
